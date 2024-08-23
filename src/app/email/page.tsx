@@ -30,34 +30,35 @@ export default async function Email({ searchParams }: {
 
   return (
     <div>
-      <Guard secret={secret} />
-      <Menu />
-      <div className="container mt-6 items-center px-2 sm:py-5 mx-auto max-w-6xl">
-        <Suspense fallback={<p>Loading feed...</p>}>
-          <Filter />
+      <Guard secret={secret} >
+        <Menu />
+        <div className="container mt-6 items-center px-2 sm:py-5 mx-auto max-w-6xl">
+          <Suspense fallback={<p>Loading feed...</p>}>
+            <Filter />
 
-          <Table className="mt-6" >
-            <TableCaption>A list of your recent mails.</TableCaption>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Subject</TableHead>
-                <TableHead>Send To</TableHead>
-                <TableHead>Module</TableHead>
-                <TableHead>Functions</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead className="text-right">Content</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {data.map((mail: any) => (
-                <EmailItem key={mail._id.toString()} item={mail} />
-              ))}
-            </TableBody>
-          </Table>
+            <Table className="mt-6" >
+              <TableCaption>A list of your recent mails.</TableCaption>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Subject</TableHead>
+                  <TableHead>Send To</TableHead>
+                  <TableHead>Module</TableHead>
+                  <TableHead>Functions</TableHead>
+                  <TableHead>Status</TableHead>
+                  <TableHead className="text-right">Content</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {data.map((mail: any) => (
+                  <EmailItem key={mail._id.toString()} item={mail} />
+                ))}
+              </TableBody>
+            </Table>
 
-          <Paginator />
-        </Suspense>
-      </div>
+            <Paginator />
+          </Suspense>
+        </div>
+      </Guard>
     </div>
 
   )

@@ -26,23 +26,24 @@ export default async function User({ searchParams }: {
 
   return (
     <div>
-      <Guard secret={secret} />
-      <Menu />
-      <div className="container mx-auto px-4">
-        <Suspense fallback={<p>Loading feed...</p>}>
-          <FormCheck />
+      <Guard secret={secret} >
+        <Menu />
+        <div className="container mx-auto px-4">
+          <Suspense fallback={<p>Loading feed...</p>}>
+            <FormCheck />
 
-          {data.length > 0 ?
-            (<div className="mx-auto max-w-3xl p-8 ">
-              {data?.map((user: any, index: number) => (
-                <Endpoint url={user.url} key={index.toString()} locations={user.locations} countries={user.countries} />
-              ))}
-            </div>)
-            : (
-              <div className="text-center">No data</div>
-            )}
-        </Suspense>
-      </div>
+            {data.length > 0 ?
+              (<div className="mx-auto max-w-3xl p-8 ">
+                {data?.map((user: any, index: number) => (
+                  <Endpoint url={user.url} key={index.toString()} locations={user.locations} countries={user.countries} />
+                ))}
+              </div>)
+              : (
+                <div className="text-center">No data</div>
+              )}
+          </Suspense>
+        </div>
+      </Guard>
     </div>
 
   )
