@@ -15,7 +15,7 @@ const EmailItem: React.FC<EmailItemProps> = ({ item }) => {
       <TableCell className="font-medium">{item.subject}</TableCell>
       <TableCell>{item.to.length > 3
         ? <Popover>
-          <PopoverTrigger>{item.to.length} emails</PopoverTrigger>
+          <PopoverTrigger className="hover:text-decoration hover:underline">{item.to.length} emails</PopoverTrigger>
           <PopoverContent side="right">
             {item.to.map((to: string) => <p key={to}>{to}</p>)}
           </PopoverContent>
@@ -25,7 +25,14 @@ const EmailItem: React.FC<EmailItemProps> = ({ item }) => {
       </TableCell>
       <TableCell>{item.module}</TableCell>
       <TableCell>{item.functions}</TableCell>
-      <TableCell>{item.error ? "Error" : "Success"}</TableCell>
+      <TableCell>{item.error
+        ? <Popover>
+          <PopoverTrigger className=" hover:text-decoration hover:underline text-red-600">Error</PopoverTrigger>
+          <PopoverContent className="break-words" side="top">{item.error.message}</PopoverContent>
+        </Popover>
+        : <div className="text-green-600">Success</div>
+      }
+      </TableCell>
       <TableCell className="text-right">
         <Dialog>
           <DialogTrigger>Click to Content</DialogTrigger>
