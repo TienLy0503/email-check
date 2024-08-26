@@ -1,8 +1,7 @@
 "use client"
 
-import { setCookies } from "@/app/_action"
+import { setSecret } from "@/app/_action"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { Button } from "../ui/button"
@@ -16,7 +15,6 @@ const formSchema = z.object({
 })
 
 export function FormSecret() {
-  const router = useRouter()
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -27,7 +25,7 @@ export function FormSecret() {
 
   return (
     <Form {...form}>
-      <form action={setCookies} className="space-y-8">
+      <form action={setSecret} className="space-y-8">
         <FormField
           control={form.control}
           name="secret"

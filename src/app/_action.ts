@@ -1,7 +1,21 @@
 "use server"
 
-import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
-export async function setCookies(formData: FormData) {
-  cookies().set("secretKey", formData.get("secret") as string);
+declare global {
+  var secret: string
+}
+
+export async function getSecret() {
+  return globalThis.secret
+}
+
+export async function setSecret(formData: FormData) {
+  globalThis.secret = formData.get("secret") as string
+
+  redirect("/email")
+}
+
+export async function clearSecret() {
+  globalThis.secret = ""
 }

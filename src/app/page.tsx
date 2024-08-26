@@ -1,19 +1,13 @@
 import { FormSecret } from "@/components/core/form";
-import { Menu } from "@/components/core/menu";
-import { cookies } from "next/headers";
+import { getSecret } from "./_action";
 
 export default async function Home() {
-  const secret = cookies().get("secretKey")?.value;
+  const secret = await getSecret()
   return (
     <div className="min-h-screen">
-      {secret ? (
-        <Menu />
-      ) : (
         <div className="max-w-80 mx-auto px-4">
           <FormSecret />
-        </div>
-      )}
-
+      </div>
     </div>
   );
 }

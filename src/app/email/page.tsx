@@ -6,8 +6,8 @@ import Paginator from "@/components/emails/Paginator";
 import { Table, TableBody, TableCaption, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { FUNCTIONS } from "@/models/enum";
 import { getLogsApi } from "@/services/get-logs";
-import { cookies } from "next/headers";
 import { Suspense } from "react";
+import { getSecret } from "../_action";
 
 export default async function Email({ searchParams }: {
   searchParams: {
@@ -23,7 +23,7 @@ export default async function Email({ searchParams }: {
   let search = searchParams?.search || '';
   const base = searchParams?.env || ''
 
-  const secret = cookies().get("secretKey")?.value;
+  const secret = await getSecret()
 
   if (currentPage < 1) currentPage = 1;
   const { data } = await getLogsApi(base, { page: currentPage, limit: LIMIT, template, search });
