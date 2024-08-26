@@ -2,6 +2,7 @@
 
 import { setSecret } from "@/app/_action"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { redirect } from "next/navigation"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { Button } from "../ui/button"
@@ -25,7 +26,7 @@ export function FormSecret() {
 
   return (
     <Form {...form}>
-      <form action={setSecret} className="space-y-8">
+      <form className="space-y-8">
         <FormField
           control={form.control}
           name="secret"
@@ -42,7 +43,11 @@ export function FormSecret() {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button formAction={async () => {
+          "use  server"
+          setSecret(form.getValues("secret"))
+          redirect("/email")
+        }}>Submit</Button>
       </form>
     </Form>
   )

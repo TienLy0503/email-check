@@ -10,8 +10,8 @@ export async function getSecret() {
   return globalThis.secret
 }
 
-export async function setSecret(formData: FormData) {
-  globalThis.secret = formData.get("secret") as string
+export async function setSecret(secret: string) {
+  globalThis.secret = secret
 
   redirect("/email")
 }
