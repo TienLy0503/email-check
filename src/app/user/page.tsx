@@ -4,8 +4,8 @@ import Endpoint from "@/components/user/endpoint";
 import FormCheck from "@/components/user/form-check";
 import { FUNCTIONS } from "@/models/enum";
 import { getUserApi } from "@/services/get-user";
+import { cookies } from "next/headers";
 import { Suspense } from "react";
-import { getSecret } from "../_action";
 
 
 export default async function User({ searchParams }: {
@@ -22,7 +22,7 @@ export default async function User({ searchParams }: {
   const base = searchParams?.env || ''
 
   const { data } = await getUserApi(base, { tenant, prefix, email })
-  const secret = await getSecret()
+  const secret = cookies().get('secretKey')?.value
 
   return (
     <div>

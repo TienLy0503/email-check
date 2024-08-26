@@ -1,8 +1,7 @@
 "use client"
 
-import { setSecret } from "@/app/_action"
+import { setCookies } from "@/app/_action"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { redirect } from "next/navigation"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { Button } from "../ui/button"
@@ -45,8 +44,8 @@ export function FormSecret() {
         />
         <Button formAction={async () => {
           "use  server"
-          setSecret(form.getValues("secret"))
-          redirect("/email")
+
+          setCookies(form.getValues('secret'))
         }}>Submit</Button>
       </form>
     </Form>
