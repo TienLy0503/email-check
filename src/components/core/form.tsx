@@ -1,8 +1,9 @@
 "use client"
 
-import { setCookies } from "@/app/_action"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
+import { useLocalStorage } from "usehooks-ts"
 import { z } from "zod"
 import { Button } from "../ui/button"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
@@ -22,10 +23,20 @@ export function FormSecret() {
     },
   })
 
+  const router = useRouter()
+  const [value, setValue] = useLocalStorage("secret", "")
+
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
+    setValue(values.secret)
+    console.log(values)
+    router.push('/email')
+  }
 
   return (
     <Form {...form}>
-      <form className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
           name="secret"
@@ -42,11 +53,7 @@ export function FormSecret() {
             </FormItem>
           )}
         />
-        <Button formAction={async () => {
-          "use  server"
-
-          setCookies(form.getValues('secret'))
-        }}>Submit</Button>
+        <Button type="submit">Submit</Button>
       </form>
     </Form>
   )

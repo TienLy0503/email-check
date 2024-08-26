@@ -6,7 +6,7 @@ declare global {
   var __SECRET_KEY__: string
 }
 
-export async function setCookies(secret: string) {
+export async function setSecretKey(secret: string) {
   global.__SECRET_KEY__ = secret
   redirect("/email")
 }

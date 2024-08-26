@@ -2,9 +2,11 @@
 
 import { useRouter } from 'next/navigation';
 import { FC } from 'react';
+import { useLocalStorage } from 'usehooks-ts';
 
-const Guard: FC<{ secret?: string, children: React.ReactNode }> = ({ secret, children }) => {
+const Guard: FC<{ secret?: string, children: React.ReactNode }> = ({ children }) => {
   const router = useRouter();
+  const [secret, setSecret] = useLocalStorage("secret", "")
 
   if (!secret || secret !== process.env.NEXT_PUBLIC_API_KEY) {
     console.log({ secret })
