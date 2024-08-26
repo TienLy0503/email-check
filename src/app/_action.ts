@@ -1,10 +1,16 @@
 "use server"
 
-import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 
-export async function setCookies(secret: string) {
-  cookies().set("secretKey", secret)
-  redirect("/email")
+declare global {
+  var __SECRET_KEY__: string
+}
 
+export async function setCookies(secret: string) {
+  global.__SECRET_KEY__ = secret
+  redirect("/email")
+}
+
+export async function getSecretKey() {
+  return global.__SECRET_KEY__
 }
