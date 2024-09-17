@@ -7,7 +7,6 @@ import { Table, TableBody, TableCaption, TableHead, TableHeader, TableRow } from
 import { FUNCTIONS } from "@/models/enum";
 import { getLogsApi } from "@/services/get-logs";
 import { Suspense } from "react";
-import { getSecretKey } from "../_action";
 
 export default async function Email({ searchParams }: {
   searchParams: {
@@ -23,14 +22,12 @@ export default async function Email({ searchParams }: {
   let search = searchParams?.search || '';
   const base = searchParams?.env || ''
 
-  const secret = await getSecretKey()
-
   if (currentPage < 1) currentPage = 1;
   const { data } = await getLogsApi(base, { page: currentPage, limit: LIMIT, template, search });
 
   return (
     <div>
-      <Guard secret={secret} >
+      <Guard >
         <Menu />
         <div className="container mt-6 items-center px-2 sm:py-5 mx-auto max-w-6xl">
           <Suspense fallback={<p>Loading feed...</p>}>

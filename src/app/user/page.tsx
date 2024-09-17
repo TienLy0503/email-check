@@ -5,7 +5,6 @@ import FormCheck from "@/components/user/form-check";
 import { FUNCTIONS } from "@/models/enum";
 import { getUserApi } from "@/services/get-user";
 import { Suspense } from "react";
-import { getSecretKey } from "../_action";
 
 
 export default async function User({ searchParams }: {
@@ -22,11 +21,10 @@ export default async function User({ searchParams }: {
   const base = searchParams?.env || ''
 
   const { data } = await getUserApi(base, { tenant, prefix, email })
-  const secret = await getSecretKey()
 
   return (
     <div>
-      <Guard secret={secret} >
+      <Guard >
         <Menu />
         <div className="container mx-auto px-4">
           <Suspense fallback={<p>Loading feed...</p>}>

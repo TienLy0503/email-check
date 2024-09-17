@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { FC } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
 
-const Guard: FC<{ secret?: string, children: React.ReactNode }> = ({ children }) => {
+const Guard: FC<{ children: React.ReactNode }> = ({ children }) => {
   const router = useRouter();
   const [secret, setSecret] = useLocalStorage("secret", "")
 
