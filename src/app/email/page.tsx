@@ -22,7 +22,13 @@ export default async function Email({ searchParams }: {
   const base = searchParams?.env || ''
 
   if (currentPage < 1) currentPage = 1;
+  let loading = true
   const { data } = await getLogsApi(base, { page: currentPage, limit: LIMIT, template, search });
+
+  if (data) {
+    loading = false
+  }
+  console.log(loading)
 
   return (
     <div>
@@ -35,7 +41,8 @@ export default async function Email({ searchParams }: {
               <TableCaption>A list of your recent mails.</TableCaption>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Subject</TableHead>
+                <TableHead>CreatedAt</TableHead>
+                <TableHead>Subject</TableHead>
                   <TableHead>Send To</TableHead>
                   <TableHead>Module</TableHead>
                   <TableHead>Functions</TableHead>
@@ -44,6 +51,7 @@ export default async function Email({ searchParams }: {
                 </TableRow>
               </TableHeader>
               <TableBody>
+              {loading && <p>Loading...</p>}
                 {data.map((mail: any) => (
                   <EmailItem key={mail._id.toString()} item={mail} />
                 ))}
@@ -57,3 +65,4 @@ export default async function Email({ searchParams }: {
 
   )
 }
+export const fetchCache = "force-no-store"

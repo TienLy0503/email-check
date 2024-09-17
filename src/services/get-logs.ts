@@ -9,6 +9,7 @@ export interface GetLogDto {
 }
 
 export async function getLogsApi(base: string, { search, template, page = 1, limit = 10 }: GetLogDto) {
+  let loading = true
   try {
     const query = new URLSearchParams({
       page: page.toString(),
@@ -20,9 +21,12 @@ export async function getLogsApi(base: string, { search, template, page = 1, lim
       method: 'GET',
     })
 
-    return { data }
+    console.log(data.length, Date.now())
+    loading = false
+    return { data, loading }
   } catch (error) {
     console.log(error)
-    return { data: [] }
+    loading = false
+    return { data: [], loading }
   }
 }

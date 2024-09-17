@@ -1,6 +1,6 @@
 import { getModelForClass, ModelOptions, prop } from "@typegoose/typegoose";
-import { FUNCTIONS, MODULE } from "./enum";
 import { Types } from "mongoose";
+import { FUNCTIONS, MODULE } from "./enum";
 
 class Abstract {
   _id: Types.ObjectId
@@ -48,6 +48,8 @@ export class SendMail extends Abstract {
 
   @prop({ type: String })
   tenant: string
+
+  createdAt: any
 }
 
 export const SendMailModel = getModelForClass(SendMail)

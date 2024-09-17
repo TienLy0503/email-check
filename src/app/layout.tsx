@@ -25,3 +25,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+export const fetchCache = "force-no-store"

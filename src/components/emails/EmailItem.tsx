@@ -1,9 +1,9 @@
 "use client"
 
-import { SendMail } from "@/models/send-mail"
-import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog"
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
-import { TableCell, TableRow } from "../ui/table"
+import { SendMail } from "@/models/send-mail";
+import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { TableCell, TableRow } from "../ui/table";
 
 interface EmailItemProps {
   item: SendMail
@@ -12,8 +12,10 @@ interface EmailItemProps {
 const EmailItem: React.FC<EmailItemProps> = ({ item }) => {
   return (
     <TableRow key={item._id.toString()}>
+      <TableCell className="w-[10%]">{item.createdAt.substring(0, 10)}</TableCell>
       <TableCell className="font-medium">{item.subject}</TableCell>
-      <TableCell>{item.to.length > 3
+      <TableCell
+      >{item.to.length > 2
         ? <Popover>
           <PopoverTrigger className="hover:text-decoration hover:underline">{item.to.length} emails</PopoverTrigger>
           <PopoverContent side="right">

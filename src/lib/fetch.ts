@@ -13,7 +13,10 @@ export const callApi = async (base: string, url: string, options?: RequestInit) 
   const baseUrl = urlMap[base] || rootUrl
 
   try {
-    const result = await fetch(baseUrl + url, options)
+    const result = await fetch(baseUrl + url, {
+      ...options,
+      cache: "no-store",
+    })
 
     if (result.ok) {
       return await result.json()
