@@ -1,4 +1,3 @@
-import Guard from "@/components/core/guard";
 import { Menu } from "@/components/core/menu";
 import Endpoint from "@/components/user/endpoint";
 import FormCheck from "@/components/user/form-check";
@@ -24,7 +23,6 @@ export default async function User({ searchParams }: {
 
   return (
     <div>
-      <Guard >
         <Menu />
         <div className="container mx-auto px-4">
           <Suspense fallback={<p>Loading feed...</p>}>
@@ -40,8 +38,7 @@ export default async function User({ searchParams }: {
                 <div className="text-center">No data</div>
               )}
           </Suspense>
-        </div>
-      </Guard>
+      </div>
     </div>
 
   )

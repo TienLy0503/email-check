@@ -1,4 +1,3 @@
-import Guard from "@/components/core/guard";
 import { Menu } from "@/components/core/menu";
 import EmailItem from "@/components/emails/EmailItem";
 import Filter from "@/components/emails/Filter";
@@ -27,7 +26,6 @@ export default async function Email({ searchParams }: {
 
   return (
     <div>
-      <Guard >
         <Menu />
         <div className="container mt-6 items-center px-2 sm:py-5 mx-auto max-w-6xl">
           <Suspense fallback={<p>Loading feed...</p>}>
@@ -54,8 +52,7 @@ export default async function Email({ searchParams }: {
 
             <Paginator />
           </Suspense>
-        </div>
-      </Guard>
+      </div>
     </div>
 
   )

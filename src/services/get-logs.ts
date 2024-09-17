@@ -22,6 +22,7 @@ export async function getLogsApi(base: string, { search, template, page = 1, lim
 
     return { data }
   } catch (error) {
+    console.log(error)
     return { data: [] }
   }
 }
