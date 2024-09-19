@@ -43,6 +43,7 @@ export default async function Email({ searchParams }: {
                 <TableHead>CreatedAt</TableHead>
                 <TableHead>Subject</TableHead>
                   <TableHead>Send To</TableHead>
+                  <TableHead>Send CC</TableHead>
                   <TableHead>Module</TableHead>
                   <TableHead>Functions</TableHead>
                   <TableHead>Status</TableHead>

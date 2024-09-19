@@ -34,6 +34,17 @@ const EmailItem: React.FC<EmailItemProps> = ({ item }) => {
         : item.to.join(',')
         }
       </TableCell>
+      <TableCell
+      >{item.cc.length > 2
+        ? <Popover>
+          <PopoverTrigger className="hover:text-decoration hover:underline">{item.cc.length} emails</PopoverTrigger>
+          <PopoverContent side="right">
+            {item.cc.map((cc: string) => <p key={cc}>{cc}</p>)}
+          </PopoverContent>
+        </Popover>
+        : item.cc.join(',')
+        }
+      </TableCell>
       <TableCell>{item.module}</TableCell>
       <TableCell>{item.functions}</TableCell>
       <TableCell>{item.error
