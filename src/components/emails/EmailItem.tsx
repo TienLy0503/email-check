@@ -37,9 +37,14 @@ const EmailItem: React.FC<EmailItemProps> = ({ item }) => {
       </TableCell>
       <TableCell className="text-right">
         <Dialog>
-          <DialogTrigger>Click to Content</DialogTrigger>
+          <DialogTrigger className="cursor-pointer underline text-blue-500">Click to Content</DialogTrigger>
           <DialogContent className="w-[90vw] max-w-4xl overflow-auto max-h-full">
-            <div dangerouslySetInnerHTML={{ __html: item.content }}></div>
+            <iframe style={{
+              width: '100%',
+              minWidth: '740px',
+              minHeight: '600px',
+            }} srcDoc={item.content} sandbox="allow-same-origin allow-scripts"
+            />
           </DialogContent>
         </Dialog>
       </TableCell>
