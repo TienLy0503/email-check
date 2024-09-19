@@ -11,7 +11,14 @@ interface EmailItemProps {
 
 const EmailItem: React.FC<EmailItemProps> = ({ item }) => {
   const createdAt = new Date(item.createdAt)
-  const createdAtStr = createdAt.getDate()  + "-" + (createdAt.getMonth()+1) + "-" + createdAt.getFullYear() + " " +  createdAt.getHours() + ":" + createdAt.getMinutes() + ":" + createdAt.getSeconds();
+  const date = `${createdAt.getDate() > 9 ? createdAt.getDate() : `0${createdAt.getDate()}`}`
+  const month = `${(createdAt.getMonth()+1) > 9 ? (createdAt.getMonth()+1) : `0${(createdAt.getMonth()+1)}`}`
+  const year = `${createdAt.getFullYear()}`
+  const hour = `${createdAt.getHours() > 9 ? createdAt.getHours() : `0${createdAt.getHours()}`}`
+  const minute = `${createdAt.getMinutes() > 9 ? createdAt.getMinutes() : `0${createdAt.getMinutes()}`}`
+  const second = `${createdAt.getSeconds() > 9 ? createdAt.getSeconds() : `0${createdAt.getSeconds()}`}`
+
+  const createdAtStr =  `${year}-${month}-${date} ${hour}:${minute}:${second}`;
   return (
     <TableRow key={item._id.toString()}>
       <TableCell className="w-[10%]">{createdAtStr}</TableCell>
