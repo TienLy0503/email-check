@@ -24,7 +24,7 @@ const EmailItem: React.FC<EmailItemProps> = ({ item }) => {
       <TableCell className="w-[10%]">{createdAtStr}</TableCell>
       <TableCell className="font-medium">{item.subject}</TableCell>
       <TableCell
-      >{item.to.length > 2
+      >{item.to.length > 1
         ? <Popover>
           <PopoverTrigger className="hover:text-decoration hover:underline">{item.to.length} emails</PopoverTrigger>
           <PopoverContent side="right">
@@ -35,7 +35,7 @@ const EmailItem: React.FC<EmailItemProps> = ({ item }) => {
         }
       </TableCell>
       <TableCell
-      >{item.cc.length > 2
+      >{item.cc.length > 1
         ? <Popover>
           <PopoverTrigger className="hover:text-decoration hover:underline">{item.cc.length} emails</PopoverTrigger>
           <PopoverContent side="right">
