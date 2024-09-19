@@ -24,7 +24,10 @@ export const Environment = () => {
 
   return (
     <Select onValueChange={
-      (value) => router.push(`${pathname}?${createQueryString('env', value)}`)
+      (value) => {
+        router.push(`${pathname}?${createQueryString('env', value)}`)
+        router.refresh()
+      }
     }>
       <SelectTrigger className="m-2 w-[180px]">
         <SelectValue placeholder="Select a env" />
