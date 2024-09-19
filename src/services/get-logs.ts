@@ -21,7 +21,6 @@ export async function getLogsApi(base: string, { search, template, page = 1, lim
       method: 'GET',
     })
 
-    console.log(data.length, Date.now())
     loading = false
     return { data, loading }
   } catch (error) {

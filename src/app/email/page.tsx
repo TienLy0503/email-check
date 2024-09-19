@@ -19,7 +19,7 @@ export default async function Email({ searchParams }: {
   let currentPage = parseInt(searchParams.page) || 1;
   let template = searchParams?.template || '';
   let search = searchParams?.search || '';
-  const base = searchParams?.env || ''
+  const base = searchParams?.env || 'dev'
 
   if (currentPage < 1) currentPage = 1;
   let loading = true
@@ -28,7 +28,6 @@ export default async function Email({ searchParams }: {
   if (data) {
     loading = false
   }
-  console.log(loading)
 
   return (
     <div>

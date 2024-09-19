@@ -40,11 +40,11 @@ const EmailItem: React.FC<EmailItemProps> = ({ item }) => {
       <TableCell className="text-right">
         <Dialog>
           <DialogTrigger className="cursor-pointer underline text-blue-500">Click to Content</DialogTrigger>
-          <DialogContent className="w-[90vw] max-w-4xl overflow-auto max-h-full">
+          <DialogContent className="w-[90vw] max-w-4xl overflow-auto max-h-full px-0 pt-9 pb-6">
             <iframe style={{
               width: '100%',
-              minWidth: '740px',
               minHeight: '600px',
+              height: '100%',
             }} srcDoc={item.content} sandbox="allow-same-origin allow-scripts"
             />
           </DialogContent>
