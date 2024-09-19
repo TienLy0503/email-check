@@ -2,12 +2,13 @@
 export const rootUrl = "https://stghrms.paxanimi.ai"
 
 const urlMap: {
-  [key: string]: string
+  [key: string]: string;
 } = {
   int: "https://inthrms.paxanimi.ai",
   dev: "https://devhrms.paxanimi.ai",
   stg: "https://stghrms.paxanimi.ai",
-}
+  prod: "https://terralogic.paxanimi.ai",
+};
 
 export const callApi = async (base: string, url: string, options?: RequestInit) => {
   const baseUrl = urlMap[base] || rootUrl

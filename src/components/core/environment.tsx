@@ -36,7 +36,8 @@ export const Environment = () => {
         <SelectGroup>
           <SelectItem value="int">Integration</SelectItem>
           <SelectItem value="dev">Dev</SelectItem>
-          <SelectItem value="staging">Staging</SelectItem>
+          <SelectItem value="stg">Staging</SelectItem>
+          <SelectItem value="prod">Production</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
