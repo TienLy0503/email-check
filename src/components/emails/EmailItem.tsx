@@ -10,9 +10,11 @@ interface EmailItemProps {
 }
 
 const EmailItem: React.FC<EmailItemProps> = ({ item }) => {
+  const createdAt = new Date(item.createdAt)
+  const createdAtStr = createdAt.getDate()  + "-" + (createdAt.getMonth()+1) + "-" + createdAt.getFullYear() + " " +  createdAt.getHours() + ":" + createdAt.getMinutes() + ":" + createdAt.getSeconds();
   return (
     <TableRow key={item._id.toString()}>
-      <TableCell className="w-[10%]">{item.createdAt.substring(0, 10)}</TableCell>
+      <TableCell className="w-[10%]">{createdAtStr}</TableCell>
       <TableCell className="font-medium">{item.subject}</TableCell>
       <TableCell
       >{item.to.length > 2

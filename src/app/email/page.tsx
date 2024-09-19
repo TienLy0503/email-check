@@ -33,7 +33,7 @@ export default async function Email({ searchParams }: {
   return (
     <div>
         <Menu />
-        <div className="container mt-6 items-center px-2 sm:py-5 mx-auto max-w-6xl">
+        <div className="container mt-6 items-center px-2 sm:py-5 mx-auto max-w-12xl">
           <Suspense fallback={<p>Loading feed...</p>}>
             <Filter />
 
