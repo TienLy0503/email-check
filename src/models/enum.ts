@@ -54,7 +54,8 @@ export namespace FUNCTIONS {
     EPAS = 'epas-api',
     ASSET = 'asset-api',
     CUSTOMER = 'api-customer',
-    PROJECT = 'api-project'
+    PROJECT = 'api-project',
+    PAYROLL = 'payroll-api',
   }
 }
 
