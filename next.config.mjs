@@ -3,7 +3,9 @@ const nextConfig = {
   experimental: {
     serverActions: true,
     serverComponentsExternalPackages:['mongoose','@typegoose/typegoose']
-}, 
+},
+basePath: '/email',
+assetPrefix: '/email/',
 images: {
   remotePatterns: [
     {
