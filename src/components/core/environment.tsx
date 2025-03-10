@@ -25,7 +25,7 @@ export const Environment = () => {
   return (
     <Select onValueChange={
       (value) => {
-        router.push(`${pathname}?${createQueryString('env', value)}`)
+        router.push(`${pathname}/email?${createQueryString('env', value)}`)
         router.refresh()
       }
     } defaultValue={searchParams.get('env') || 'dev'}>
